@@ -17,6 +17,8 @@ CleanArchitecture/
 │   │   └── [Servicios de aplicación]       # Casos de uso, DTOs, interfaces
 │   │
 │   ├── CleanArchitecture.Infrastructure/   # Capa de Infraestructura
+│   │   ├── Database/                       # Archivos de base de datos
+│   │   │   └── app.db                      # Base de datos SQLite
 │   │   └── Persistence/                    # Persistencia de datos
 │   │       └── ApplicationDbContext.cs     # Contexto de EF Core
 │   │
@@ -40,7 +42,8 @@ CleanArchitecture/
 ### 3. Infrastructure (CleanArchitecture.Infrastructure)
 - Implementa las interfaces definidas en Application
 - Contiene la implementación de persistencia con Entity Framework Core
-- Configuración de SQLite
+- Configuración y archivos de SQLite
+- Manejo de la base de datos y otros detalles externos
 - Depende de Domain y Application
 
 ### 4. API (CleanArchitecture.Api)
@@ -66,6 +69,8 @@ CleanArchitecture/
 - ✅ Entity Framework Core
 - ✅ Inyección de dependencias
 - ✅ Ejemplo CRUD completo
+- ✅ Separación clara de responsabilidades
+- ✅ Estructura escalable
 
 ## Endpoints API
 
@@ -112,7 +117,15 @@ La aplicación utiliza SQLite como base de datos. El archivo de base de datos se
 src/CleanArchitecture.Infrastructure/Database/app.db
 ```
 
-Esto sigue los principios de Clean Architecture, manteniendo los detalles de persistencia en la capa de Infraestructura.
+Esto sigue los principios de Clean Architecture, manteniendo los detalles de persistencia en la capa de Infraestructura. La conexión a la base de datos se configura en la capa de API a través de appsettings.json, pero el archivo físico y la lógica de persistencia se mantienen en la capa de Infraestructura.
+
+## Principios de Clean Architecture Aplicados
+
+- **Independencia de Frameworks**: El dominio no depende de la existencia de ninguna biblioteca externa
+- **Testeable**: La lógica de negocio puede probarse sin la UI, base de datos o servidor web
+- **Independiente de la UI**: La UI puede cambiar sin cambiar el resto del sistema
+- **Independiente de la Base de Datos**: Se puede cambiar SQLite por cualquier otra base de datos
+- **Independiente de cualquier elemento externo**: Las reglas de negocio no saben nada sobre el mundo exterior
 
 ## Licencia
 
