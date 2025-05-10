@@ -109,8 +109,10 @@ http://localhost:5294/swagger
 
 La aplicación utiliza SQLite como base de datos. El archivo de base de datos se crea automáticamente en:
 ```
-src/CleanArchitecture.Api/app.db
+src/CleanArchitecture.Infrastructure/Database/app.db
 ```
+
+Esto sigue los principios de Clean Architecture, manteniendo los detalles de persistencia en la capa de Infraestructura.
 
 ## Licencia
 
